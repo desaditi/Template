@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Clock</title>
+<style type="text/css">
+#clock { 
+        font-family: Arial;
+        font-size: 0.9em; 
+        color: Black; 
+        background-color:White; 
+        border: 1px solid Red;
+        padding: 4px; 
+      }
+</style>
+<script type="text/javascript">
+function init ( ){
+  timeDisplay = document.createTextNode ( "" );
+  document.getElementById("clock").appendChild ( timeDisplay );
+  }
+
+function clock( ){
+  var Time = new Date ( );
+  var Hrs =  Time.getHours ( );
+  var Mins = Time.getMinutes ( );
+  var Secs = Time.getSeconds ( );
+
+    Mins = ( Mins < 10 ? "0" : "" ) + Mins;
+	Secs = ( Secs < 10 ? "0" : "" ) + Secs;
+
+  var T_Day = ( Hrs < 12 ) ? "AM" : "PM";
+    Hrs = ( Hrs > 12 ) ? Hrs - 12 : Hrs;
+	Hrs = ( Hrs == 0 ) ? 12 : Hrs;
+
+  var TimeString = Hrs + ":" + Mins + ":" + Secs + " " + T_Day;
+
+  document.getElementById("clock").firstChild.nodeValue = TimeString;
+}
+</script>
+</head>
+  <body onload="clock(); setInterval('clock()', 1000 )">
+    <div style="width: 10em; text-align: center; margin: 20px auto;">
+        <span id="clock">&nbsp;</span>
+    </div>
+</body>
+</html>
